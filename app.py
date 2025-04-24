@@ -68,10 +68,10 @@ def handle_message(event: Event):
             reply_text = "這是你的課表～"
         else:
             reply_text = ("你說了：" + user_message)
-elif user_message == "台積電股票":
-        try:
+        elif user_message == "台積電股票":
+            try:
             image_url = txt_to_img_url()
-            if not image_url:
+                if not image_url:
                 error_message = f"抱歉，沒有取得股票趨勢圖，{image_url}。"
                 line_bot_api.reply_message(
                     event.reply_token,
