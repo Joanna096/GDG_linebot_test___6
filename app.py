@@ -90,8 +90,6 @@ def handle_message(event: Event):
                     TextMessage(text=error_message)
                 )
             return
-        else:
-            reply_text = ("你說了：" + user_message)
 
         line_bot_api.reply_message(
             event.reply_token,
