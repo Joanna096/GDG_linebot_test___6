@@ -96,7 +96,7 @@ def handle_message(event: Event):
             return
         else:
             try:
-                response = model.generate_content(user_message) # 傳送使用者的問題給 Gemini
+                response = model.generate_content(user_message, systemInstruction="用繁體中文回復") # 傳送使用者的問題給 Gemini
                 reply_text = response.text if response else "抱歉，我無法回答這個問題。"
             except Exception as e:
                 error_message = f"ai error：{e}"
