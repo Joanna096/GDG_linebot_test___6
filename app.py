@@ -76,23 +76,23 @@ def handle_message(event: Event):
                 line_bot_api.reply_message(
                     event.reply_token,
                     TextMessage(text=error_message)
+                    )
+                    return
+                line_bot_api.reply_message(
+                    event.reply_token,
+                    ImageSendMessage(
+                        original_content_url=image_url,
+                        preview_image_url=image_url
+                    )
                 )
-                return
-            line_bot_api.reply_message(
-                event.reply_token,
-                ImageSendMessage(
-                    original_content_url=image_url,
-                    preview_image_url=image_url
+            except Exception as e:
+                error_message = f"抱歉，無法生成股票趨勢圖，錯誤原因：{e}"
+                line_bot_api.reply_message(
+                    event.reply_token,
+                    TextMessage(text=error_message)
                 )
-            )
-        except Exception as e:
-            error_message = f"抱歉，無法生成股票趨勢圖，錯誤原因：{e}"
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextMessage(text=error_message)
-            )
-        return
-
+            return
+        else:
 
         line_bot_api.reply_message(
             event.reply_token,
